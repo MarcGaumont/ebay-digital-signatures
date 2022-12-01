@@ -10,6 +10,7 @@
      */
      
      /* Vars im really using*/
+     //'base_uri'      => 'https://api.ebay.com/' (url base for the $path) for guzzle call
      
      $method = "GET;
      
