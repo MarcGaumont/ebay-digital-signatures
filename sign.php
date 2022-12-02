@@ -38,9 +38,10 @@
         $signature_base .= '"@signature-params": ' . $signature_input_txt;
 
         // format the private key as required
-        $formatted_private_key = "-----BEGIN PRIVATE KEY-----" . PHP_EOL . $tokens['privateKey'] . PHP_EOL . "-----END RSA PRIVATE KEY-----";
+        $formatted_private_key = "-----BEGIN PRIVATE KEY-----" . PHP_EOL . $tokens['privateKey'] . PHP_EOL . "-----END PRIVATE KEY-----";
 
-        openssl_sign($signature_base, $signed_signature, $formatted_private_key, "sha256WithRSAEncryption");
+        openssl_sign($signature_base, $signed_signature, $formatted_private_key, OPENSSL_ALGO_SHA256);
+        
         return [
             'Signature-Input' => 'sig1=' . $signature_input_txt,
             'Signature' => 'sig1=:' . base64_encode($signed_signature) . ':',
